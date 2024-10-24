@@ -1,0 +1,111 @@
+---
+---
+
+<div class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+  <!-- Background video with gradient overlay -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="relative w-[80%] h-[80%] overflow-hidden rounded-3xl">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505]"></div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-10 flex flex-col items-center justify-center">
+    <!-- Title -->
+    <h1 class="text-yellow-300 text-[12rem] font-bold tracking-wide text-center leading-none">
+      <span class="block">Bite &</span>
+      <span class="block -mt-16">Smash</span>
+    </h1>
+
+    <!-- Burger image with glow effect -->
+    <div class="relative">
+      <div class="absolute inset-0 bg-yellow-200 opacity-75 blur-3xl"></div>
+      <img 
+        src="/burger.webp" 
+        alt="Delicious Bite & Smash burger" 
+        class="relative z-10 w-[24rem] h-[24rem] object-contain mt-[-8rem] [mask-image:linear-gradient(to_top,black_75%,transparent_100%)]"
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex gap-4 mt-8">
+      <a href="/carta" class="bg-yellow-400 px-6 py-3 rounded-full text-white font-semibold text-lg transition-colors hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 focus:ring-offset-[#050505]">
+        Carta
+      </a>
+      <a href="/menu" class="bg-white px-6 py-3 rounded-full text-yellow-500 font-semibold text-lg transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]">
+        Menú
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  h1 {
+    animation: fadeInDown 1s ease-out;
+  }
+
+  img {
+    animation: fadeInUp 1s ease-out 0.5s both;
+  }
+
+  a {
+    animation: fadeIn 1s ease-out 1s both;
+  }
+
+  .bg-yellow-300 {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+</style>

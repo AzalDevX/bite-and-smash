@@ -1,13 +1,15 @@
 ---
-export interface Props {
+import NavLinks from '../components/NavLinks.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+
+interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -15,24 +17,73 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-background text-text-primary min-h-screen">
-    <slot />
+  <body>
+    <div id="app" class="relative">
+      <button id="menuToggle" class="fixed top-4 left-4 z-50 w-10 h-10 flex flex-col justify-center items-center">
+        <span class="sr-only">Toggle menu</span>
+        <span class="w-6 h-0.5 bg-yellow-400 mb-1.5 transform transition-all duration-300 ease-in-out"></span>
+        <span class="w-6 h-0.5 bg-yellow-400 mb-1.5 transform transition-all duration-300 ease-in-out"></span>
+        <span class="w-6 h-0.5 bg-yellow-400 transform transition-all duration-300 ease-in-out"></span>
+      </button>
+
+      <div id="menu" class="fixed inset-0 bg-[#050505] z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex felx-row">+
+		  <img src="/favicon.svg" class="w-8 h-8 text-white" alt="">
+        <NavLinks />
+		<SocialIcons />
+      </div>
+      <main>
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
 
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+<script>
+  let menuOpen = false;
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+  const spans = menuToggle.querySelectorAll('span:not(.sr-only)');
 
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      menu.classList.remove('-translate-x-full');
+      spans[0].classList.add('rotate-45', 'translate-y-2');
+      spans[1].classList.add('opacity-0');
+      spans[2].classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      menu.classList.add('-translate-x-full');
+      spans[0].classList.remove('rotate-45', 'translate-y-2');
+      spans[1].classList.remove('opacity-0');
+      spans[2].classList.remove('-rotate-45', '-translate-y-2');
+    }
   }
 
+  menuToggle.addEventListener('click', toggleMenu);
+
+  window.addEventListener('closeMenu', () => {
+    menuOpen = false;
+    menu.classList.add('-translate-x-full');
+    spans[0].classList.remove('rotate-45', 'translate-y-2');
+    spans[1].classList.remove('opacity-0');
+    spans[2].classList.remove('-rotate-45', '-translate-y-2');
+  });
+</script>
+
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151A;
+    background-size: 224px;
+  }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
       Bitstream Vera Sans Mono, Courier New, monospace;
   }
-
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
 </style>

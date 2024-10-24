@@ -1,0 +1,23 @@
+---
+// src/components/Menu.astro
+import MenuToggle from './MenuToggle.astro';
+import FullScreenMenu from './FullScreenmenu.astro';
+---
+
+<MenuToggle />
+<FullScreenMenu />
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const fullScreenMenu = document.getElementById('fullScreenMenu');
+  const hamburger = document.getElementById('hamburger');
+  const close = document.getElementById('close');
+
+  menuToggle.addEventListener('click', () => {
+    fullScreenMenu.classList.toggle('-translate-x-full');
+    hamburger.classList.toggle('hidden');
+    close.classList.toggle('hidden');
+    menuToggle.classList.toggle('text-yellow-400');
+    menuToggle.classList.toggle('text-white');
+  });
+</script>
