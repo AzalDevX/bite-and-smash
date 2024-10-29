@@ -1,0 +1,45 @@
+<div id="scrollProgress" class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-100 via-yellow-500 to-yellow-600 transform scale-x-0 origin-left transition-transform duration-300 ease-out z-50"></div>
+
+<script>
+  const scrollProgress = document.getElementById('scrollProgress');
+  let lastScrollTop = 0;
+  let ticking = false;
+
+  function updateScrollProgress() {
+    const winScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    if (scrollProgress) {
+      scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+    }
+
+    lastScrollTop = winScroll <= 0 ? 0 : winScroll;
+    ticking = false;
+  }
+
+  function initScrollProgress() {
+    if (scrollProgress) {
+      scrollProgress.style.transform = 'scaleX(0)';
+    }
+  }
+
+  window.addEventListener('load', initScrollProgress);
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateScrollProgress();
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+</script>
+
+<style>
+  #scrollProgress {
+    transition: transform 0.2s ease-out;
+  }
+</style>

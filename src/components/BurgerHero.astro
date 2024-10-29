@@ -1,10 +1,10 @@
 ---
 ---
 
-<div class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+<div class="relative w-full min-h-screen overflow-hidden flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
   <!-- Background video with gradient overlay -->
   <div class="absolute inset-0 flex items-center justify-center">
-    <div class="relative w-[80%] h-[80%] overflow-hidden rounded-3xl">
+    <div class="relative w-full h-full sm:w-[80%] sm:h-[80%] overflow-hidden rounded-none sm:rounded-3xl">
       <video
         autoplay
         loop
@@ -23,27 +23,27 @@
   <!-- Main content -->
   <div class="relative z-10 flex flex-col items-center justify-center">
     <!-- Title -->
-    <h1 class="text-yellow-300 text-[12rem] font-bold tracking-wide text-center leading-none">
+    <h1 class="text-yellow-300 text-6xl sm:text-8xl md:text-10xl lg:text-[12rem] font-bold tracking-wide text-center leading-none">
       <span class="block">Bite &</span>
-      <span class="block -mt-16">Smash</span>
+      <span class="block -mt-2 sm:-mt-4 md:-mt-8 lg:-mt-16">Smash</span>
     </h1>
 
     <!-- Burger image with glow effect -->
-    <div class="relative">
+    <div class="relative mt-4 sm:mt-0">
       <div class="absolute inset-0 bg-yellow-200 opacity-75 blur-3xl"></div>
       <img 
         src="/burger.webp" 
         alt="Delicious Bite & Smash burger" 
-        class="relative z-10 w-[24rem] h-[24rem] object-contain mt-[-8rem] [mask-image:linear-gradient(to_top,black_75%,transparent_100%)]"
+        class="relative z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[24rem] lg:h-[24rem] object-contain mt-0 sm:mt-[-2rem] md:mt-[-4rem] lg:mt-[-8rem] [mask-image:linear-gradient(to_top,black_75%,transparent_100%)]"
       />
     </div>
 
     <!-- Buttons -->
-    <div class="flex gap-4 mt-8">
-      <a href="/carta" class="bg-yellow-400 px-6 py-3 rounded-full text-white font-semibold text-lg transition-colors hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 focus:ring-offset-[#050505]">
+    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+      <a href="/carta" class="bg-yellow-400 px-6 py-3 rounded-full text-white font-semibold text-lg transition-colors hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 focus:ring-offset-[#050505] w-full sm:w-auto text-center">
         Carta
       </a>
-      <a href="/menu" class="bg-white px-6 py-3 rounded-full text-yellow-500 font-semibold text-lg transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]">
+      <a href="/menu" class="bg-white px-6 py-3 rounded-full text-yellow-500 font-semibold text-lg transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505] w-full sm:w-auto text-center">
         Menú
       </a>
     </div>

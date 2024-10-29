@@ -1,22 +1,28 @@
 ---
 ---
 
-<nav class="text-4xl font-bold text-yellow-300 mt-32 ml-5">
-  <ul class="space-y-16">
+<nav class="text-2xl sm:text-4xl lg:text-6xl xl:text-8xl font-bold text-yellow-300 mt-16 sm:mt-24 lg:mt-32">
+  <ul class="space-y-8 sm:space-y-12 lg:space-y-16">
     <li class="nav-item">
-      <a href="#quienes-somos" class="nav-link text-[8rem] relative overflow-hidden group">
-        <span class="nav-text">Quienes somos</span>
+      <a href="/" class="nav-link relative overflow-hidden group">
+        <span class="nav-text">Inicio</span>
         <span class="nav-line"></span>
       </a>
     </li>
     <li class="nav-item">
-      <a href="/carta" class="nav-link text-[8rem] relative overflow-hidden group">
+      <a href="/#quienes-somos" class="nav-link relative overflow-hidden group">
+        <span class="nav-text">Quienes Somos</span>
+        <span class="nav-line"></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/carta" class="nav-link relative overflow-hidden group">
         <span class="nav-text">Carta</span>
         <span class="nav-line"></span>
       </a>
     </li>
     <li class="nav-item">
-      <a href="/menu" class="nav-link text-[8rem] relative overflow-hidden group">
+      <a href="/menu" class="nav-link relative overflow-hidden group">
         <span class="nav-text">Menu</span>
         <span class="nav-line"></span>
       </a>
@@ -95,5 +101,15 @@
 
   .nav-item:nth-child(3) {
     animation-delay: 0.4s;
+  }
+
+  @media (max-width: 640px) {
+    .nav-link:hover .nav-text {
+      transform: translateY(-4px);
+    }
+
+    .nav-link:hover {
+      transform: rotateX(5deg);
+    }
   }
 </style>

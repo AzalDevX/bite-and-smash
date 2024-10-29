@@ -1,6 +1,7 @@
 ---
 import NavLinks from '../components/NavLinks.astro';
 import SocialIcons from '../components/SocialIcons.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
 
 interface Props {
   title: string;
@@ -18,6 +19,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <ScrollProgress />
     <div id="app" class="relative">
       <button id="menuToggle" class="fixed top-4 left-4 z-50 w-10 h-10 flex flex-col justify-center items-center">
         <span class="sr-only">Toggle menu</span>
@@ -29,7 +31,7 @@ const { title } = Astro.props;
       <div id="menu" class="fixed inset-0 bg-[#050505] z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex felx-row">+
 		  <img src="/favicon.svg" class="w-8 h-8 text-white" alt="">
         <NavLinks />
-		<SocialIcons />
+		    <SocialIcons />
       </div>
       <main>
         <slot />
